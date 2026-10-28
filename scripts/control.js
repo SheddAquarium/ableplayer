@@ -789,6 +789,11 @@ function addControlFunctions(AblePlayer) {
 
 	AblePlayer.prototype.handlePrevTrack = function() {
 
+		// ignore rapid repeat clicks while a playlist swap is still in progress
+		if (this.recreatingPlayer) {
+			return;
+		}
+
 		// currently on the first track
 		// wrap to bottom and play the last track
 		let newIndex = (this.playlistIndex === 0) ? this.$playlist.length - 1 : this.playlistIndex - 1;
@@ -797,6 +802,11 @@ function addControlFunctions(AblePlayer) {
 	};
 
 	AblePlayer.prototype.handleNextTrack = function() {
+
+		// ignore rapid repeat clicks while a playlist swap is still in progress
+		if (this.recreatingPlayer) {
+			return;
+		}
 
 		// currently on the last track
 		// wrap to top and play the first track

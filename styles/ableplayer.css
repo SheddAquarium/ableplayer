@@ -32,17 +32,13 @@
 **/
 
 :root {
-	--able-white: #fff;
-	--able-black: #000;
-	--able-transparent-gray: #00000077;
-	--able-medium-light-gray: #a8a8a8;
 	--able-light-gray: #dadada;
 	--able-very-light-gray: #eee;
 	--able-off-white: #fdfdfd;
-	--able-dark-gray: #262626;
-	--able-medium-dark-gray: #333;
-	--able-medium-dark-gray2: #464646;
-	--able-medium-gray: #666;
+	--depths: #012345;
+	--white: #fff;
+	--splash: #B8EBFC;
+	--audio-gradient-top: #E7F9FF;
 	--able-bright-yellow: #ff6;
 	--able-light-yellow: #ffc;
 	--able-bright-orange: #f90;
@@ -59,78 +55,78 @@
 .able-transcript-area,
 .able-wrapper {
 	--able-base-control-size: 24px;
-	--able-color: var(--able-white);
-	--able-control-background: var(--able-black);
-	--able-control-color: var(--able-white);
-	--able-big-play-background: var(--able-transparent-gray);
-	--able-alert-button-color: var(--able-black);
-	--able-seekbar-border: var(--able-medium-light-gray);
-	--able-seekbar-background: var(--able-black);
-	--able-seekbar-loaded: var(--able-medium-gray);
-	--able-seekbar-played: var(--able-light-gray);
-	--able-seekbar-head: var(--able-off-white);
-	--able-control-label-color: var(--able-white);
-	--able-controller-background: var(--able-medium-dark-gray2);
-	--able-separator-color: var(--able-medium-light-gray);
-	--able-volume-background: var(--able-black);
-	--able-volume-outline: var(--able-medium-gray);
-	--able-statusbar-color: var(--able-light-gray);
-	--able-statusbar-background: var(--able-black);
-	--able-default-caption-color: var(--able-white);
-	--able-default-caption-background: var(--able-black);
+	--able-color: var(--white);
+	--able-control-background: var(--white);
+	--able-control-color: var(--white);
+	/* --able-big-play-background: var(--black-8); */
+	--able-alert-button-color: var(--black-22);
+	--able-seekbar-border: var(--depths);
+	--able-seekbar-background: var(--white);
+	--able-seekbar-loaded: var(--white);
+	--able-seekbar-played: var(--depths);
+	--able-seekbar-head: var(--white);
+	--able-control-label-color: var(--white);
+	--able-controller-background: var(--white);
+	--able-separator-color: var(--black-22);
+	--able-volume-background: var(--white);
+	/* --able-volume-outline: var(--caribbean-reef); */
+	--able-statusbar-color: var(--depths);
+	--able-statusbar-background: var(--white);
+	--able-default-caption-color: var(--depths);
+	--able-default-caption-background: var(--white);
 	--able-default-description-color: var(--able-bright-yellow);
-	--able-default-description-background: var(--able-dark-gray);
-	--able-description-border: var(--able-medium-gray);
-	--able-now-playing-color: var(--able-white);
-	--able-now-playing-background: var(--able-black);
-	--able-modal-color: var(--able-black);
+	--able-default-description-background: var(--depths);
+	/* --able-description-border: var(--caribbean-reef); */
+	--able-now-playing-color: var(--white);
+	--able-now-playing-background: var(--white);
+	--able-modal-color: var(--depths);
 	--able-modal-background: var(--able-off-white);
-	--able-modal-overlay: var(--able-transparent-gray);
-	--able-modal-border: 3px solid var(--able-light-gray);
+	/* --able-modal-overlay: var(--black-8); */
+	--able-modal-border: 3px solid var(--depths);
 	--able-drag-outline: var(--able-bright-orange);
-	--able-sign-background: var(--able-white);
-	--able-sign-border: var(--able-black);
-	--able-resizable-color: var(--able-medium-gray);
+	--able-sign-background: var(--white);
+	--able-sign-border: var(--black-22);
+	/* --able-resizable-color: var(--caribbean-reef); */
 	--able-chapter-background: transparent;
-	--able-chapter-color: var(--able-black);
-	--able-current-chapter-background: var(--able-black);
-	--able-current-chapter-color: var(--able-white);
-	--able-focus-outline: var(--able-light-orange);
+	--able-chapter-color: var(--black-22);
+	--able-current-chapter-background: var(--black-22);
+	--able-current-chapter-color: var(--white);
+	--able-focus-outline: var(--depths);
 	--able-hover-outline: var(--able-bright-green);
 	--able-tooltip-border: var(--able-dark-gray);
-	--able-tooltip-color: var(--able-medium-dark-gray);
+	--able-tooltip-color: var(--depths);
 	--able-tooltip-background: var(--able-very-light-gray);
 	--able-alert-background: var(--able-light-yellow);
 	--able-menu-border: var(--able-dark-gray);
-	--able-menu-background: var(--able-black);
-	--able-menu-outline: var(--able-medium-gray);
-	--able-menu-color: var(--able-white);
+	--able-menu-background: var(--depths);
+	/* --able-menu-outline: var(--caribbean-reef); */
+	--able-menu-color: var(--white);
 	--able-menu-focus-background: var(--able-very-light-gray);
-	--able-menu-focus-color: var(--able-black);
-	--able-transcript-background: var(--able-white);
+	--able-menu-focus-color: var(--depths);
+	--able-transcript-background: var(--audio-gradient-top);
 	--able-cue-audio-description-background: var(--able-light-pink);
-	--able-cue-audio-description-color: var(--able-dark-gray);
-	--able-cue-highlighted-background: var(--able-black);
-	--able-cue-highlighted-color: var(--able-white);
+	--able-cue-audio-description-color: var(--depths);
+	--able-cue-highlighted-background: var(--depths);
+	--able-cue-highlighted-color: var(--white);
 	--able-cue-interacting-background: var(--able-light-yellow);
-	--able-cue-interacting-color: var(--able-black);
+	--able-cue-interacting-color: var(--depths);
 	--able-playlist-item-background: var(--able-off-white);
-	--able-playlist-item-color: var(--able-black);
-	--able-playlist-item-button-color: var(--able-black);
-	--able-search-results-button-background: var(--able-white);
-	--able-search-results-button-color: var(--able-black);
-	--able-playlist-current-background: var(--able-white);
-	--able-playlist-current-border: var(--able-dark-gray);
-	--able-playlist-current-outline: var(--able-medium-dark-gray);
-	--able-playlist-current-active-color: var(--able-black);
-	--able-playlist-current-active-background: var(--able-white);
+	--able-playlist-item-color: var(--black-22);
+	--able-playlist-item-button-color: var(--depths);
+	--able-search-results-button-background: var(--white);
+	--able-search-results-button-color: var(--black-22);
+	--able-playlist-current-background: var(--white);
+	--able-playlist-current-border: var(--white);
+	--able-playlist-current-outline: var(--depths);
+	--able-playlist-current-active-color: var(--depths);
+	--able-playlist-current-active-background: var(--white);
 	--able-search-term-background: var(--able-light-yellow);
-	--able-search-term-color: var(--able-black);
+	--able-search-term-color: var(--black-22);
 }
 
-.able-black-controls {
+.able-white-controls {
 	--able-control-background: #fff !important;
-	--able-control-color: #000 !important;
+	--able-control-color: var(--depths) !important;
 }
 
 .able-playlist,
@@ -139,7 +135,7 @@
 .able-modal-dialog,
 .able-transcript-area,
 .able-wrapper {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: MuseoSlab, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 .able-playlist, .able-playlist *,
@@ -152,7 +148,7 @@
 	position: relative;
 	margin: 0 auto;
 	padding: 0;
-	max-width: 100%;
+	width: 100%;
 	height: auto;
 	text-align: start;
 }
@@ -286,14 +282,10 @@ video[data-able-player],
 
 .able-audio-wrapper {
 	display: flex;
+	flex-direction: column;
 	gap: 4px;
 	align-items: center;
 	padding: 4px;
-	background: var(--able-control-background);
-}
-
-.able-audio-wrapper img {
-	max-width: 120px;
 }
 
 .able-audio-wrapper .able-audio {
@@ -344,7 +336,9 @@ video[data-able-player],
 }
 
 .able-controller .able-seekbar {
-	border: 1px solid var(--able-seekbar-border);
+	border: 3px solid var(--able-seekbar-border);
+	border-radius: 10px;
+	height: 15px;
 }
 
 .able-controller div[role="button"] {
@@ -364,9 +358,12 @@ video[data-able-player],
 	border-radius: 3px;
 }
 
-.able-controller div.able-button-handler-play[role="button"] {
+.able-controller div.able-button-handler-play[role="button"], div.able-button-handler-previous[role="button"],
+div.able-button-handler-next[role="button"] {
 	/* The icon appears too large if this button doesn't have padding. */
 	padding: 4px;
+	height: 40px;
+	width: 40px;
 }
 
 .able-controller .buttonOff {
@@ -418,6 +415,7 @@ video[data-able-player],
 	display: inline-block;
 	position: relative;
 	left: 0;
+	border: 3px solid var(--depths);
 	background-color: var(--able-seekbar-head);
 	min-width: var(--able-base-control-size);
 	min-height: var(--able-base-control-size);
@@ -449,7 +447,7 @@ video[data-able-player],
 	writing-mode: bt-rl;
 	width: 28px;
 	height: 100%;
-	background: transparent; /* Otherwise white in Chrome */
+	background: var(--white); /* Otherwise white in Chrome */
 }
 
 /* Style slider in Firefox */
@@ -457,7 +455,7 @@ video[data-able-player],
 	border: 1px solid #fff;
 	width: 7px;
 	cursor: pointer;
-	background: #000;
+	background: var(--white);
 }
 
 input[type=range]::-moz-range-thumb {
@@ -551,15 +549,38 @@ div.able-descriptions {
 /* Now Playing */
 div.able-now-playing {
 	text-align: center;
+	color: var(--depths);
+	background-color: var(--white);
+	width: 100%;
+	font-size: 50px;
+	text-transform: uppercase;
 	font-weight: bold;
-	font-size: 1rem;
-	padding: 0.5rem 0.5rem 1rem;
-	color: var(--able-now-playing-color);
-	background: var(--able-now-playing-background);
+	display: block;
+	overflow: hidden;
+	white-space: wrap;
 }
 
+/* Now playing title of track */
 div.able-now-playing span {
-	font-size: 0.875rem;
+	display: block;
+	font-size: 30px;
+	padding: 20px 0px 10px 0px;
+
+	/* Marquess animaion */
+	/* display: inline-block;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite; */
+}
+
+/* Make it move
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+} */
+
+/* Now playing text that says 'Now Playing:' */
+div.able-now-playing span span {
+	font-size: 12px;
 }
 
 div.able-video div.able-now-playing {
@@ -695,7 +716,7 @@ div.able-modal-dialog h1 {
 }
 
 .able-prefs-captions .able-prefCaptionsSpeak:not(:empty) {
-	border-top: 1px solid var(--able-medium-light-gray);
+	border-top: 1px solid var(--caribbean-reef);
 	margin-top: .5rem;
 	padding-top: .5rem;
 }
@@ -768,7 +789,7 @@ span.able-modkey {
 
 /* Drag & Drop */
 .able-window-toolbar {
-	background-color: var(--able-controller-background);
+	background-color: var(--able-transcript-background);
 	color: var(--able-control-color);
 	padding: 8px;
 	border: none;
@@ -805,7 +826,7 @@ span.able-modkey {
 }
 
 .able-window-toolbar .able-drag-handle path {
-	fill: var(--able-medium-light-gray);
+	fill: var(--caribbean-reef);
 }
 
 .able-draggable:hover .able-drag-handle path {
@@ -967,17 +988,6 @@ div.able-chapters-div li.able-current-chapter button {
 	color: var(--able-current-chapter-color);
 }
 
-div.able-chapters-div button:focus {
-	border: 0;
-	outline: 2px solid var(--able-focus-outline);
-	outline-offset: 2px;
-}
-
-div.able-chapters-div button:hover {
-	outline: 2px solid var(--able-hover-outline);
-	outline-offset: 2px;
-}
-
 div.able-wrapper.fullscreen {
 	margin: 0 !important;
 	position: fixed !important;
@@ -1076,9 +1086,11 @@ ul.able-popup li.able-focus,
 }
 
 /* Transcript */
+.able-transcript-parent-container {
+	background-color: var(--able-transcript-background);
+}
+
 .able-transcript-area {
-	border-width: 1px;
-	border-style: solid;
 	z-index: 7000;
 	padding-bottom: 25px; /* keep content above drag icon */
 	background-color: var(--able-transcript-background);
@@ -1091,6 +1103,7 @@ ul.able-popup li.able-focus,
 	padding-right: 1rem;
 	background-color: #fff;
 	height: 350px;
+	background-color: var(--able-transcript-background);
 }
 
 .able-transcript div {
@@ -1149,11 +1162,12 @@ ul.able-popup li.able-focus,
 	display: inline;
 	font-size: .875rem;
 	margin-right: .333rem;
-	color: var(--able-control-label-color);
+	color: var(--depths);
 }
 
 .able-window-toolbar .autoscroll-transcript label {
 	margin-right: 0;
+	color: var(--depths);
 }
 
 div.able-modal-dialog input,
@@ -1174,7 +1188,7 @@ div.able-modal-dialog button,
 	outline-color: transparent;
 }
 
-.able-playlist button:focus,
+/* .able-playlist button:focus,
 .able-search-results li button:focus,
 .able-alert button:focus,
 .able-modal-dialog button:focus,
@@ -1190,10 +1204,10 @@ div.able-modal-dialog button:focus,
 .able-controller	div[role="button"]:focus,
 .able-seekbar-head:focus {
 	outline-color: var(--able-focus-outline);
-}
+} */
 
 /* Control hover colors. */
-.able-playlist li button:hover,
+/* .able-playlist li button:hover,
 .able-search-results li button:hover,
 .able-alert button:hover,
 .able-modal-dialog button:hover,
@@ -1210,7 +1224,7 @@ div.able-modal-dialog button:hover,
 .able-controller div[role="button"]:hover,
 .able-seekbar-head:hover {
 	outline-color: var(--able-hover-outline);
-}
+} */
 
 /* Playlist (both audio and video) */
 .able-search-results ul,
@@ -1219,15 +1233,18 @@ div.able-modal-dialog button:hover,
 	margin: 0;
 	padding: 0;
 	display: grid;
+
+	max-height: 319px; /* height for playlist scroll */
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-color: var(--depths);
 }
 
 .able-search-results li,
 .able-playlist li {
-	background-color: var(--able-playlist-item-background); /* default background color of each item in playlist */
 	color: var(--able-playlist-item-color);
 	padding: 0;
 	margin: 0;
-	border: 1px solid;
 	width: auto;
 	border-bottom: none;
 	max-width: 100%;
@@ -1239,13 +1256,8 @@ div.able-modal-dialog button:hover,
 
 .able-search-results li:first-of-type,
 .able-playlist li:first-of-type:not(.able-player .able-playlist li) {
-	border-radius: 5px 5px 0 0;
-}
-
-.able-search-results li:last-of-type,
-.able-playlist li:last-of-type:not(.able-player .able-playlist li) {
-	border-bottom: 2px solid;
-	border-radius: 0 0 5px 5px;
+	display: flex;
+	align-items: center;
 }
 
 .able-search-results li button,
@@ -1255,7 +1267,7 @@ div.able-modal-dialog button:hover,
 	background-color: transparent;
 	font-size: .875rem;
 	width: 100%;
-	padding: 8px;
+	padding: 10px 30px;
 	text-align: start;
 	display: flex;
 	align-items: center;
@@ -1288,17 +1300,28 @@ div.able-modal-dialog button:hover,
 }
 
 .able-playlist li.able-current { /* currently selected playlist item */
-	background-color: var(--able-playlist-current-background);
-	border-color: var(--able-playlist-current-border);
-	outline: 2px solid var(--able-playlist-current-outline);
-	outline-offset: -2px;
+	background-color: var(--audio-gradient-top);
+	display: flex;
+	align-items: center;
+}
+
+.able-playlist li.able-current::after {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../button-icons/play-icon.svg');
 }
 
 .able-playlist li.able-current button:hover,
 .able-playlist li.able-current button:focus,
 .able-playlist li.able-current button:active	 {
 	color: var(--able-playlist-current-active-color);
-	background: var(--able-playlist-current-active-background);
+	background: transparent;
 }
 
 /* Search Styling */

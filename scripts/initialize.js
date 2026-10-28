@@ -289,8 +289,24 @@ import DOMPurify from 'dompurify';
 
 		this.hasPlaylist = false; // will change to true if a matching playlist is found
 
+		// no source elements were provided. Construct them from the first playlist item
+		let startWithIndex = 0
+
 		$('.able-playlist').each(function() {
 			if ($(this).data('player') === thisObj.mediaId) {
+
+				// If there are params in the URL, check to determine which habitat track to start with
+				const urlParams = new URLSearchParams(window.location.search);
+				const trackParam = urlParams.get('track');
+				const playlistParam = urlParams.get('playlist');
+
+				if (trackParam && playlistParam && thisObj.mediaId === `audio-${playlistParam}`) {
+					const ol = document.querySelector(`[data-player="audio-${playlistParam}"]`);
+					const li = document.getElementById(`audio-source-${trackParam}`);
+					const index = [...ol.children].indexOf(li); 
+					startWithIndex = index
+				}
+
 				// this is the playlist for the current player
 				thisObj.hasPlaylist = true;
 				// If using an embedded player, we'll replace $playlist with the clone later.
@@ -344,8 +360,7 @@ import DOMPurify from 'dompurify';
 			parent.remove();
 		}
 		if (this.hasPlaylist && this.$sources.length === 0) {
-			// no source elements were provided. Construct them from the first playlist item
-			this.cuePlaylistItem(0);
+			this.cuePlaylistItem(startWithIndex);
 			// redefine this.$sources now that media contains one or more <source> elements
 			this.$sources = this.$media.find('source');
 		}

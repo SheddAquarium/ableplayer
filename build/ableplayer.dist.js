@@ -3773,86 +3773,87 @@
 
   	AblePlayer.prototype.positionDraggableWindow = function (which, width) {
 
-  		// which is either 'transcript' or 'sign'
-  		var preferences, preferencePos, $window, windowPos, viewportWidth, windowWidth;
+  		// // which is either 'transcript' or 'sign'
+  		// var preferences, preferencePos, $window, windowPos, viewportWidth, windowWidth;
 
-  		preferences = this.getPref();
-  		$window = ( which === 'transcript' ) ? this.$transcriptArea : this.$signWindow;
-  		if ( ! $window ) {
-  			return;
-  		}
-  		if (which === 'transcript') {
-  			if (typeof preferences.transcript !== 'undefined') {
-  				preferencePos = preferences.transcript;
-  			}
-  			if ( this.prevTranscriptPosition ) {
-  				preferencePos = this.prevTranscriptPosition;
-  				this.prevTranscriptPosition = false;
-  			}
-  		} else if (which === 'sign') {
-  			if (typeof preferences.sign !== 'undefined') {
-  				preferencePos = preferences.sign;
-  			}
-  			if ( this.prevSignPosition ) {
-  				preferencePos = this.prevSignPosition;
-  				this.prevSignPosition = false;
-  			}
-  		}
-  		if (typeof preferencePos !== 'undefined' && !($.isEmptyObject(preferencePos))) {
-  			// position window using stored values from preferences
-  			$window.css({
-  				'position': preferencePos['position'],
-  				'width': preferencePos['width'],
-  				'z-index': preferencePos['zindex']
-  			});
-  			if (preferencePos['position'] === 'absolute') {
-  				$window.css({
-  					'top': preferencePos['top'],
-  					'left': preferencePos['left']
-  				});
-  				// Check whether the window is above the top of the viewport.
-  				let topPosition = $window.offset().top;
-  				let leftPosition = $window.offset().left;
-  				viewportWidth = window.innerWidth;
-  				windowWidth = $window.width();
-  				if ( topPosition < 0 ) {
-  					$window.css({
-  						'top': preferencePos['top'] - topPosition
-  					});
-  				}
-  				// If draggable window is off screen to the left.
-  				if ( leftPosition < 0 && ! this.restoringAfterFullscreen ) {
-  					$window.css({
-  						'left': preferencePos['left'] - leftPosition
-  					});
-  				}
-  				// If draggable window is off screen to the right.
-  				if ( viewportWidth - leftPosition < 30 ) {
-  					$window.css({
-  						'left': viewportWidth - windowWidth
-  					});
-  				}
-  			}
-  			// since preferences are not page-specific, z-index needs may vary across different pages
-  			this.updateZIndex(which);
-  		} else {
-  			// position window using default values
-  			windowPos = this.getOptimumPosition(which, width);
-  			if (typeof width === 'undefined') {
-  				width = this.getDefaultWidth(which);
-  			}
-  			$window.css({
-  				'position': windowPos[0],
-  				'width': width,
-  				'z-index': windowPos[3]
-  			});
-  			if (windowPos[0] === 'absolute') {
-  				$window.css({
-  					'top': windowPos[1] + 'px',
-  					'left': windowPos[2] + 'px',
-  				});
-  			}
-  		}
+  		// preferences = this.getPref();
+  		// $window = ( which === 'transcript' ) ? this.$transcriptArea : this.$signWindow;
+  		// if ( ! $window ) {
+  		// 	return;
+  		// }
+  		// if (which === 'transcript') {
+  		// 	if (typeof preferences.transcript !== 'undefined') {
+  		// 		preferencePos = preferences.transcript;
+  		// 	}
+  		// 	if ( this.prevTranscriptPosition ) {
+  		// 		preferencePos = this.prevTranscriptPosition;
+  		// 		this.prevTranscriptPosition = false;
+  		// 	}
+  		// } else if (which === 'sign') {
+  		// 	if (typeof preferences.sign !== 'undefined') {
+  		// 		preferencePos = preferences.sign;
+  		// 	}
+  		// 	if ( this.prevSignPosition ) {
+  		// 		preferencePos = this.prevSignPosition;
+  		// 		this.prevSignPosition = false;
+  		// 	}
+  		// }
+  		// if (typeof preferencePos !== 'undefined' && !($.isEmptyObject(preferencePos))) {
+  		// 	// position window using stored values from preferences
+  		// 	$window.css({
+  		// 		'position': preferencePos['position'],
+  		// 		'width': preferencePos['width'],
+  		// 		'z-index': preferencePos['zindex']
+  		// 	});
+  		// 	if (preferencePos['position'] === 'absolute') {
+  		// 		$window.css({
+  		// 			'top': preferencePos['top'],
+  		// 			'left': preferencePos['left']
+  		// 		});
+  		// 		// Check whether the window is above the top of the viewport.
+  		// 		let topPosition = $window.offset().top;
+  		// 		let leftPosition = $window.offset().left;
+  		// 		viewportWidth = window.innerWidth;
+  		// 		windowWidth = $window.width();
+  		// 		if ( topPosition < 0 ) {
+  		// 			$window.css({
+  		// 				'top': preferencePos['top'] - topPosition
+  		// 			});
+  		// 		}
+  		// 		// If draggable window is off screen to the left.
+  		// 		if ( leftPosition < 0 && ! this.restoringAfterFullscreen ) {
+  		// 			console.log( leftPosition );
+  		// 			$window.css({
+  		// 				'left': preferencePos['left'] - leftPosition
+  		// 			});
+  		// 		}
+  		// 		// If draggable window is off screen to the right.
+  		// 		if ( viewportWidth - leftPosition < 30 ) {
+  		// 			$window.css({
+  		// 				'left': viewportWidth - windowWidth
+  		// 			});
+  		// 		}
+  		// 	}
+  		// 	// since preferences are not page-specific, z-index needs may vary across different pages
+  		// 	this.updateZIndex(which);
+  		// } else {
+  		// 	// position window using default values
+  		// 	windowPos = this.getOptimumPosition(which, width);
+  		// 	if (typeof width === 'undefined') {
+  		// 		width = this.getDefaultWidth(which);
+  		// 	}
+  		// 	$window.css({
+  		// 		'position': windowPos[0],
+  		// 		'width': width,
+  		// 		'z-index': windowPos[3]
+  		// 	});
+  		// 	if (windowPos[0] === 'absolute') {
+  		// 		$window.css({
+  		// 			'top': windowPos[1] + 'px',
+  		// 			'left': windowPos[2] + 'px',
+  		// 		});
+  		// 	}
+  		// }
   	};
 
   	AblePlayer.prototype.getOptimumPosition = function (targetWindow, targetWidth) {

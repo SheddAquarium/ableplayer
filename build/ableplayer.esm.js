@@ -2585,11 +2585,15 @@ function addBuildplayerFunctions(AblePlayer) {
 		// NOTE: Swapping source for audio description is handled elsewhere;
 		// see description.js > swapDescription()
 
-		var $newItem, prevPlayer, newPlayer, itemTitle, itemLang, nowPlayingSpan;
+		var $newItem, newPlayer, itemTitle, itemLang, nowPlayingSpan;
 
 		var thisObj = this;
 
-		prevPlayer = this.player;
+		// bail out if a previous rebuild (e.g. from a rapid prior click) is still in progress;
+		// otherwise deletePlayer() below would empty the controller div with nothing left to rebuild it
+		if (this.recreatingPlayer) {
+			return;
+		}
 
 		if (this.initializing) ; else {
 			if (this.playerCreated) {
@@ -2632,21 +2636,9 @@ function addBuildplayerFunctions(AblePlayer) {
 		} else {
 			newPlayer = 'html5';
 		}
-		if (newPlayer === 'youtube') {
-			if (prevPlayer === 'html5') {
-				// pause and hide the previous media
-				if (this.playing) {
-					this.pauseMedia();
-				}
-				this.$media.hide();
-			}
-		} else {
+		if (newPlayer === 'youtube') ; else {
 			// the new player is not youtube
 			this.youTubeId = false;
-			if (prevPlayer === 'youtube') {
-				// unhide the media element
-				this.$media.show();
-			}
 		}
 		this.player = newPlayer;
 
@@ -4405,6 +4397,11 @@ function addControlFunctions(AblePlayer) {
 
 	AblePlayer.prototype.handlePrevTrack = function() {
 
+		// ignore rapid repeat clicks while a playlist swap is still in progress
+		if (this.recreatingPlayer) {
+			return;
+		}
+
 		// currently on the first track
 		// wrap to bottom and play the last track
 		let newIndex = (this.playlistIndex === 0) ? this.$playlist.length - 1 : this.playlistIndex - 1;
@@ -4413,6 +4410,11 @@ function addControlFunctions(AblePlayer) {
 	};
 
 	AblePlayer.prototype.handleNextTrack = function() {
+
+		// ignore rapid repeat clicks while a playlist swap is still in progress
+		if (this.recreatingPlayer) {
+			return;
+		}
 
 		// currently on the last track
 		// wrap to top and play the first track
@@ -4741,7 +4743,9 @@ function addControlFunctions(AblePlayer) {
 				this.$transcriptArea.show();
 				// showing transcriptArea has a cascading effect of showing all content *within* transcriptArea
 				// need to re-hide the popup menu
-				this.$transcriptPopup.hide();
+				if (this.$transcriptPopup && this.$transcriptPopup.is(':visible')) {
+					this.$transcriptPopup.hide();
+				}
 				this.toggleButtonState( this.$transcriptButton, ! visible, this.translate( 'hideTranscript', 'Hide transcript' ), this.translate( 'showTranscript', 'Show transcript' ) );
 				this.prefTranscript = 1;
 				// move focus to first focusable element (window options button)
@@ -8068,8 +8072,24 @@ function addInitializeFunctions(AblePlayer) {
 
 		this.hasPlaylist = false; // will change to true if a matching playlist is found
 
+		// no source elements were provided. Construct them from the first playlist item
+		let startWithIndex = 0;
+
 		$('.able-playlist').each(function() {
 			if ($(this).data('player') === thisObj.mediaId) {
+
+				// If there are params in the URL, check to determine which habitat track to start with
+				const urlParams = new URLSearchParams(window.location.search);
+				const trackParam = urlParams.get('track');
+				const playlistParam = urlParams.get('playlist');
+
+				if (trackParam && playlistParam && thisObj.mediaId === `audio-${playlistParam}`) {
+					const ol = document.querySelector(`[data-player="audio-${playlistParam}"]`);
+					const li = document.getElementById(`audio-source-${trackParam}`);
+					const index = [...ol.children].indexOf(li); 
+					startWithIndex = index;
+				}
+
 				// this is the playlist for the current player
 				thisObj.hasPlaylist = true;
 				// If using an embedded player, we'll replace $playlist with the clone later.
@@ -8123,8 +8143,7 @@ function addInitializeFunctions(AblePlayer) {
 			parent.remove();
 		}
 		if (this.hasPlaylist && this.$sources.length === 0) {
-			// no source elements were provided. Construct them from the first playlist item
-			this.cuePlaylistItem(0);
+			this.cuePlaylistItem(startWithIndex);
 			// redefine this.$sources now that media contains one or more <source> elements
 			this.$sources = this.$media.find('source');
 		}

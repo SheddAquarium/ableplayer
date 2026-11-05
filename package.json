@@ -9,6 +9,10 @@
     "type": "git",
     "url": "git+https://github.com/ableplayer/ableplayer.git"
   },
+  "engines": {
+    "node": ">=26.13.0",
+    "npm": ">=11.20.0"
+  },
   "type": "module",
   "main": "build/ableplayer.esm.js",
   "scripts": {

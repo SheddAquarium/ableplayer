@@ -4540,6 +4540,10 @@ function addControlFunctions(AblePlayer) {
 					this.vimeoPlayer.disableTextTrack();
 				} else {
 					this.$captionsWrapper.hide();
+					// Hide the parent div
+					if (thisObj.mediaType === "audio") {
+						thisObj.$captionsContainer.addClass("captions-off");
+					}
 				}
 			} else {
 				// captions are off. Turn them on.
@@ -4556,6 +4560,9 @@ function addControlFunctions(AblePlayer) {
 					});
 				} else {
 					this.$captionsWrapper.show();
+					if (thisObj.mediaType === "audio") {
+						thisObj.$captionsContainer.removeClass("captions-off");
+					}
 				}
 				for (var i=0; i<captions.length; i++) {
 					if (captions[i].def === true) { // this is the default language

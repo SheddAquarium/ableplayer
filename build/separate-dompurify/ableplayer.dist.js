@@ -2915,6 +2915,14 @@
 	        this.$captionsWrapper.hide();
 	        this.prefCaptions = 0;
 	      }
+
+	      // Have to put this here because moving it into the functions above messes with the saved captions setting.
+	      if (this.mediaType === "audio" && this.captions.length > 0 && this.captionsOn) {
+	        this.$captionsContainer.removeClass("captions-off");
+	      }
+	      else {
+	        this.$captionsContainer.addClass("captions-off");
+	      }       
 	    }
 	  };
 
@@ -11908,8 +11916,8 @@
 	      }
 	    }
 
-	    // If client has provided separate transcript location, override user's preference for hiding transcript
-	    if (!this.prefTranscript && !this.transcriptDivLocation) {
+	    // If the prefTranscript option is off OR If client has provided separate transcript location, override user's preference for hiding transcript
+	    if (!this.prefTranscript || (!this.prefTranscript && !this.transcriptDivLocation)) {
 	      this.$transcriptArea.hide();
 	    }
 	  };

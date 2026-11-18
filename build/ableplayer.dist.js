@@ -5162,6 +5162,14 @@
           this.$captionsWrapper.hide();
           this.prefCaptions = 0;
         }
+
+        // Have to put this here because moving it into the functions above messes with the saved captions setting.
+        if (this.mediaType === "audio" && this.captions.length > 0 && this.captionsOn) {
+          this.$captionsContainer.removeClass("captions-off");
+        }
+        else {
+          this.$captionsContainer.addClass("captions-off");
+        }       
       }
     };
 
@@ -6790,6 +6798,10 @@
   					this.vimeoPlayer.disableTextTrack();
   				} else {
   					this.$captionsWrapper.hide();
+  					// Hide the parent div
+  					if (thisObj.mediaType === "audio") {
+  						thisObj.$captionsContainer.addClass("captions-off");
+  					}
   				}
   			} else {
   				// captions are off. Turn them on.
@@ -6806,6 +6818,9 @@
   					});
   				} else {
   					this.$captionsWrapper.show();
+  					if (thisObj.mediaType === "audio") {
+  						thisObj.$captionsContainer.removeClass("captions-off");
+  					}
   				}
   				for (var i=0; i<captions.length; i++) {
   					if (captions[i].def === true) { // this is the default language

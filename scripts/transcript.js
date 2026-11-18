@@ -131,8 +131,8 @@ function addTranscriptFunctions(AblePlayer) {
       }
     }
 
-    // If the prefTranscript option is off OR If client has provided separate transcript location, override user's preference for hiding transcript
-    if (!this.prefTranscript || (!this.prefTranscript && !this.transcriptDivLocation)) {
+    // If client has provided separate transcript location, override user's preference for hiding transcript
+    if (!this.prefTranscript && !this.transcriptDivLocation) {
       this.$transcriptArea.hide();
     }
   };
